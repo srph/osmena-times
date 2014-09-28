@@ -3,13 +3,23 @@
 class DashboardController extends \BaseController {
 
 	/**
+	 * Class constructor
+	 *
+	 */
+	public function __construct()
+	{
+		$this->beforeFilter('auth', ['except' => 'getLogin']);
+		$this->beforeFilter('guest', ['only' => 'getLogin']);
+	}
+
+	/**
 	 * Display a listing of the resource.
 	 *
 	 * @return Response
 	 */
-	public function index()
+	public function getIndex()
 	{
-		//
+		return View::make('dashboard.index.template');
 	}
 
 
@@ -18,68 +28,30 @@ class DashboardController extends \BaseController {
 	 *
 	 * @return Response
 	 */
-	public function create()
+	public function getLogin()
 	{
-		//
+		return View::make('dashboard.login');
 	}
 
-
 	/**
-	 * Store a newly created resource in storage.
+	 * Show the form for creating a new resource.
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function postLogin()
 	{
-		//
-	}
+		$account = [
+			'username'	=> Input::get('username'),
+			'password'	=> Input::get('password')
+		];
 
+		if ( Auth::attempt($account) )
+		{
+			re
+		}
 
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
-	{
-		//
-	}
-
-
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		//
-	}
-
-
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id)
-	{
-		//
-	}
-
-
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function destroy($id)
-	{
-		//
+		return Redirect::back()
+			->with('login.error', 'Invalid username/password');
 	}
 
 

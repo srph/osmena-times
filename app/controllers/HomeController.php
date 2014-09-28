@@ -17,7 +17,7 @@ class HomeController extends BaseController {
 
 	public function getIndex()
 	{
-		return View::make('app.index');
+		return View::make('app.index.template');
 	}
 
 	public function getAbout()

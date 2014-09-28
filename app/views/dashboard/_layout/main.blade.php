@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Osmena Times - @yield('title')</title>
+	<title>Osmena Times Dashboard - @yield('title')</title>
 	<link rel="stylesheet" href="/assets/css/bootstrap.css">
 	<link rel="stylesheet" href="/assets/css/stylesheet.css">
 </head>
 <body>
 	<div class="container">
-		@include('app._layout.partials.nav')
+		@include('app._layout._partials.nav')
 
 		@yield('content')
 
-		@include('app._layout.partials.footer')
+		@include('app._layout._partials.footer')
 	</div>
 
 	<script src="/assets/js/jquery.js"></script>

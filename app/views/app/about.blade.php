@@ -1,3 +1,3 @@
-@extends('app._layout.template')
+@extends('app._layout.main')
 
 @section('title') About @stop

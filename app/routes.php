@@ -11,7 +11,7 @@
 |
 */
 
-Route::group(['prefix' => 'dashboard'], function()
+Route::group(['prefix' => 'dashboard', 'namespace' => 'dashboard'], function()
 {
 	Route::resource('news', 'NewsController');
 	Route::controller('/', 'DashboardController');
