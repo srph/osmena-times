@@ -13,7 +13,7 @@
 
 Route::group(['prefix' => 'dashboard'], function()
 {
-	Route::resource('users', 'UserController');
+	Route::resource('users', 'UsersController');
 	Route::resource('news', 'NewsController');
 	Route::controller('/', 'DashboardController', [
 		'getIndex'	=> 'dashboard',
