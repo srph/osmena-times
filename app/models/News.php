@@ -27,7 +27,7 @@ class News extends Eloquent {
 		return asset('uploads/news/' . $this->cover);
 	}
 
-	public function upload($file)
+	public static function upload($file)
 	{
 		$name = str_random(10);
 		$ext = $file->getOriginalClientExtension();

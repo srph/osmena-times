@@ -18,7 +18,7 @@ class NewsController extends \BaseController {
 	 */
 	public function index()
 	{
-		$news = News::with('user')->paginate(10);
+		$news = News::with('user')->orderBy('id', 'desc')->paginate(10);
 
 		return View::make('dashboard.news.index')
 			->with('news', $news);
@@ -43,14 +43,17 @@ class NewsController extends \BaseController {
 	 */
 	public function store()
 	{
-		$input = Input::all();
-		$file = News::upload(Input::file('cover'));
-		$news = new News([
-			'user_id'		=> Auth::user()->id,
-			'title'			=> Input::get('title'),
-			'content'		=> Input::get('content'),
-			'cover'			=> $file
-		]);
+		$news = new News;
+		$news->user_id	= Auth::user()->id;
+		$news->title	= Input::get('title');
+		$news->content	= Input::get('content');
+
+		if( Input::hasFile('cover') )
+		{
+			$file = News::upload(Input::file('cover'));
+			$news->cover = $file;
+		}
+		
 		$news->save();
 
 		Session::flash(
