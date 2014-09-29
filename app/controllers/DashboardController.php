@@ -47,7 +47,7 @@ class DashboardController extends \BaseController {
 
 		if ( Auth::attempt($account) )
 		{
-			re
+			return Redirect::route('dashboard');
 		}
 
 		return Redirect::back()
