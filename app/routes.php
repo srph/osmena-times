@@ -16,6 +16,11 @@ App::error(function(Illuminate\Database\Eloquent\ModelNotFoundException $excepti
 	return View::make('etc.missing');
 });
 
+App::missing(function(Exception $e)
+{
+	return View::make('etc.missing');
+});
+
 Route::group(['prefix' => 'dashboard'], function()
 {
 	Route::resource('users', 'UsersController');
