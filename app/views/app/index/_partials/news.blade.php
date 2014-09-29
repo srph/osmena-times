@@ -4,7 +4,7 @@
 			<section class="thumbnail" style="height: 400px; position: relative;">
 				<img src="uploads/news/cover.jpg">
 				<section class="caption">
-					<h4> {{ $article->title }} </h4>
+					<h4 class="ellipsis"> {{ $article->title }} </h4>
 
 					<div class="clearfix" style="margin-top: -10px; margin-bottom: -10px;">					
 						<h5 class="pull-right">
