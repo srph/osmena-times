@@ -8,8 +8,8 @@ class DashboardController extends \BaseController {
 	 */
 	public function __construct()
 	{
-		$this->beforeFilter('auth', ['except' => 'getLogin']);
-		$this->beforeFilter('guest', ['only' => 'getLogin']);
+		$this->beforeFilter('auth', ['except' => 'postLogin']);
+		$this->beforeFilter('guest', ['only' => 'postLogin']);
 	}
 
 	/**
@@ -35,13 +35,23 @@ class DashboardController extends \BaseController {
 			'password'	=> Input::get('password')
 		];
 
-		if ( Auth::attempt($account) )
+		if ( Auth::attempt($account, false) )
 		{
 			return Redirect::route('dashboard');
 		}
 
-		return Redirect::back()
-			->with('login.error', 'Invalid username/password');
+		Session::flash('login.error', 'Invalid username/password');
+		return Redirect::back();
+	}
+
+	/**
+	 *
+	 */
+	public function getLogout()
+	{
+		Auth::logout();
+		Session::flash('logout', 'You have been successfully logged out!');
+		return Redirect::route('dashboard');
 	}
 
 

@@ -7,8 +7,6 @@
 </head>
 <body>
 	<div class="container">
-		@include('app._layout._partials.nav')
-
 		@yield('content')
 
 		@include('app._layout._partials.footer')

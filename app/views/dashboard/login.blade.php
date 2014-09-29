@@ -18,7 +18,13 @@
 					</div>
 				@endif
 
-				<form action="">
+				@if( Session::has('logout') )
+					<div class="alert alert-success">
+						{{ Session::get('logout') }}
+					</div>
+				@endif
+
+				<form action="/dashboard/login" method="POST">
 					<div class="form-group">
 						<label> Username </label>
 						<input type="text" class="form-control" placeholder="Username.." name="username">
