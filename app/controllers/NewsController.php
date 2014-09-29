@@ -1,6 +1,6 @@
 <?php
 
-class NewsController.php extends \BaseController {
+class NewsController extends \BaseController {
 
 	/**
 	 * Display a listing of the resource.
