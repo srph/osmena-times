@@ -20,7 +20,7 @@ class CreateNewsTable extends Migration {
 			$table->string('title');
 			$table->text('content');
 			$table->string('preview');
-			$table->string('cover');
+			$table->string('cover')->default('cover.jpg');
 			$table->timestamps();
 		});
 	}

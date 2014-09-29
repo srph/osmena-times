@@ -1,6 +1,6 @@
 <div class="media">
 	<a class="pull-left" href="#">
-		<img class="media-object" src="{{ Auth::user()->profile->dpLink }}" width="64px">
+		<img class="media-object" src="{{ asset(Auth::user()->profile->dpLink) }}" width="64px">
 	</a>
 	<div class="media-body">
 		<h4 class="media-heading">{{ Auth::user()->username }}</h4>

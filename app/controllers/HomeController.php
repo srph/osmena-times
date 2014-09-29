@@ -30,9 +30,13 @@ class HomeController extends BaseController {
 
 	public function article($id)
 	{
-		$news = News::findOrFail($id);
+		$main = News::findOrFail($id);
+		$news = News::orderBy('id', 'desc')
+			->take(10)
+			->get();
 
 		return View::make('app.news.view')
+			->with('main', $main)
 			->with('news', $news);
 	}
 
@@ -41,8 +45,14 @@ class HomeController extends BaseController {
 		$user = User::where('username', $username)
 			->firstOrFail();
 
+		$news = $user->news()
+			->orderBy('id', 'desc')
+			->take(10)
+			->get();
+
 		return View::make('app.users.view')
-			->with('user', $user);
+			->with('user', $user)
+			->with('news', $news);
 	}
 
 }

@@ -43,7 +43,7 @@
 						<a href="{{ route('dashboard.news.edit', $article->id) }}"> <i class="glyphicon glyphicon-pencil"></i> </a>
 						<a href="#" data-id="{{ $article->id }}" class="js-delete"> <i class="glyphicon glyphicon-trash"></i> </a>
 					</td>
-					<td> {{ $article->->user()->withTrashed()->first()->username }} </td>
+					<td> {{ $article->user()->withTrashed()->first()->username }} </td>
 					<td> {{ $article->title }} </td>
 					<td> {{ $article->created_at->diffForHumans() }} </td>
 				</tr>

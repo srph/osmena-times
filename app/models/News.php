@@ -16,5 +16,10 @@ class News extends Eloquent {
 	{
 		return $this->belongsToMany('User', 'views');
 	}
+
+	public function getCoverLinkAttribute()
+	{
+		return asset('uploads/news/' . $this->cover);
+	}
 	
 }
