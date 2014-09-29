@@ -1,27 +1,24 @@
 <div class="row">
-	<div class="col-sm-6 col-md-4">
-		<section class="thumbnail">
-			<img src="uploads/news/cover.jpg">
-			<section class="caption">
-				<h4>
-					Dolore eu fugiat nulla <br />
-					<small>
-						<i class="glyphicon glyphicon-time"></i>
-						5 mins ago
-					</small>
-				</h4>
-				<p>
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-				</p>
-				<p>
-					<a href="#" class="btn btn-default" role="button">Read More</a>
-				</p>
+	@foreach($news as $article)
+		<div class="col-sm-6 col-md-4">
+			<section class="thumbnail" style="height: 400px;">
+				<img src="uploads/news/cover.jpg">
+				<section class="caption">
+					<h4>
+						{{ $article->title }} <br />
+						<small>
+							<i class="glyphicon glyphicon-time"></i>
+							{{ $article->created_at->diffForHumans() }}
+						</small>
+					</h4>
+					<p> {{ $article->preview }} </p>
+					<p>
+						<a href="#" class="btn btn-default" role="button">Read More</a>
+					</p>
+				</section>
 			</section>
-		</section>
-	</div>
-</div>	
+		</div>
+	@endforeach
+</div>
+
+{{ $news->links() }}
