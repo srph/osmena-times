@@ -8,8 +8,8 @@ class DashboardController extends \BaseController {
 	 */
 	public function __construct()
 	{
-		$this->beforeFilter('auth', ['except' => 'postLogin']);
-		$this->beforeFilter('guest', ['only' => 'postLogin']);
+		$this->beforeFilter('guest', ['except' => 'getIndex']);
+		$this->beforeFilter('auth', ['only' => 'getIndex']);
 	}
 
 	/**
