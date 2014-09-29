@@ -85,6 +85,26 @@ class LocalSeeder extends Seeder {
 				'updated_at'	=> $this->now()
 			]);
 		}
+
+		$db = DB::table('profiles');
+		$db->delete();
+		$fn = $faker->firstNameFemale;
+
+		foreach(range(1, $count) as $index)
+		{
+			$db->insert([
+				'id'			=> $index,
+				'first_name'	=> $fn,
+				'last_name'		=> $faker->lastName(),
+				'about_me'		=> $faker->paragraph(3),
+				'photo'			=> 'dp.jpg',
+				'facebook'		=> $fn,
+				'twitter'		=> '@' . $fn,
+				'created_at'	=> $this->now(),
+				'updated_at'	=> $this->now()
+			]);
+		}
+
 	}
 
 }
