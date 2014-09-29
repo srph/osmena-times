@@ -79,6 +79,7 @@ class LocalSeeder extends Seeder {
 		{
 			$db->insert([
 				'id'			=> $index,
+				'profile_id'	=> $index,
 				'username'		=> $faker->username,
 				'password'		=> Hash::make('1234'),
 				'created_at'	=> $this->now(),
@@ -89,15 +90,14 @@ class LocalSeeder extends Seeder {
 		$db = DB::table('profiles');
 		$db->delete();
 		$fn = $faker->firstNameFemale;
+		$ln = $faker->lastName;
 
 		foreach(range(1, $count) as $index)
 		{
 			$db->insert([
 				'id'			=> $index,
-				'first_name'	=> $fn,
-				'last_name'		=> $faker->lastName(),
+				'name'			=> $fn . ' ' . $ln,
 				'about_me'		=> $faker->paragraph(3),
-				'photo'			=> 'dp.jpg',
 				'facebook'		=> $fn,
 				'twitter'		=> '@' . $fn,
 				'created_at'	=> $this->now(),

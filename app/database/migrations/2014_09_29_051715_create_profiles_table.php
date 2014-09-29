@@ -15,12 +15,11 @@ class CreateProfilesTable extends Migration {
 		Schema::create('profiles', function($table)
 		{
 			$table->increments('id');
-			$table->string('first_name');
-			$table->string('last_name');
-			$table->string('about_me');
-			$table->string('photo');
-			$table->string('facebook');
-			$table->string('twitter');
+			$table->string('name');
+			$table->string('about_me')->nullable();
+			$table->string('photo')->default('dp.jpg');
+			$table->string('facebook')->nullable();
+			$table->string('twitter')->nullable();
 			$table->timestamps();
 		});
 	}
