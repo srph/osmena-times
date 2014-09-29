@@ -31,7 +31,7 @@
 					
 					<div class="clearfix">
 						<button type="submit" class="btn btn-success pull-left">Login</button>
-						<button type="submit" class="btn btn-warning pull-right">Cancel</button>
+						<a href="/" class="btn btn-warning pull-right">Cancel</a>
 					</div>
 				</form>
 			</div>
