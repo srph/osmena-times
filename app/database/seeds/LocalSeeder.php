@@ -79,7 +79,6 @@ class LocalSeeder extends Seeder {
 		{
 			$db->insert([
 				'id'			=> $index,
-				'profile_id'	=> $index,
 				'username'		=> $faker->username,
 				'password'		=> Hash::make('1234'),
 				'created_at'	=> $this->now(),
@@ -96,6 +95,7 @@ class LocalSeeder extends Seeder {
 		{
 			$db->insert([
 				'id'			=> $index,
+				'user_id'		=> $index,
 				'name'			=> $fn . ' ' . $ln,
 				'about_me'		=> $faker->paragraph(3),
 				'facebook'		=> $fn,

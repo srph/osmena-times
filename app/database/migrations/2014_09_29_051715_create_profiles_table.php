@@ -15,6 +15,7 @@ class CreateProfilesTable extends Migration {
 		Schema::create('profiles', function($table)
 		{
 			$table->increments('id');
+			$table->string('user_id');
 			$table->string('name');
 			$table->string('about_me')->nullable();
 			$table->string('photo')->default('dp.jpg');
