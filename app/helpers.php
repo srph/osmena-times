@@ -14,3 +14,11 @@ function activeInRoute($route = '')
 		return 'class="active"';
 	}
 }
+
+function justAddActive($route = '')
+{
+	if( Request::is($route) )
+	{
+		return 'active';
+	}
+}
