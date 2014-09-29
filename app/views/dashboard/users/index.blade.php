@@ -23,6 +23,12 @@
 			{{ Session::get('users.delete.success') }}
 		</div>
 	@endif
+
+	@if( Session::has('users.profile.update.success') )
+		<div class="alert alert-success">
+			{{ Session::get('users.profile.update.success') }}
+		</div>
+	@endif
 	
 	<table class="table table-striped">
 		<thead>
@@ -39,7 +45,7 @@
 					<td> {{ $user->id }} </td>
 					<td>
 						<a href="{{ route('dashboard.users.edit', $user->id) }}"> <i class="glyphicon glyphicon-pencil"></i> </a>
-						<a href="#"> <i class="glyphicon glyphicon-trash"></i> </a>
+						<a href="#" class="js-delete" data-id="{{ $user->id }}"> <i class="glyphicon glyphicon-trash"></i> </a>
 					</td>
 					<td> {{ $user->username }} </td>
 				</tr>
@@ -48,4 +54,28 @@
 	</table>
 
 	{{ $users->links() }}
+@stop
+
+@section('scripts')
+	<script>
+		(function ($, undefined) {
+			$('.js-delete').on('click', function(e) {
+				e.preventDefault();
+				var id = $(this).data('id');
+				var url = '/dashboard/users/' + id;
+
+				$.ajax({
+					url: url,
+					type: 'DELETE',
+					success: function(response) {
+						if ( response.status ) {
+							window.location.reload();
+						} else {
+							alert('Unable to process your request.');
+						}
+					}
+				})
+			});
+		})(jQuery);
+	</script>
 @stop

@@ -113,12 +113,14 @@ class UsersController extends \BaseController {
 	{
 		$user = User::findOrFail($id);
 		$user->delete();
+		$user->profile->delete();
 
 		Session::flash(
 			'users.delete.success',
 			"$user->username has been successfully deleted"
 		);
-		return Redirect::route('dashboard.users.index');
+		
+		return Response::json(['status' => true]);
 	}
 
 

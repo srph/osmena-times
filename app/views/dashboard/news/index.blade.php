@@ -41,15 +41,41 @@
 					<td> {{ $article->id }} </td>
 					<td>
 						<a href="{{ route('dashboard.news.edit', $article->id) }}"> <i class="glyphicon glyphicon-pencil"></i> </a>
-						<a href="#"> <i class="glyphicon glyphicon-trash"></i> </a>
+						<a href="#" data-id="{{ $article->id }}" class="js-delete"> <i class="glyphicon glyphicon-trash"></i> </a>
 					</td>
-					<td> {{ $article->user->username }} </td>
+					<td> {{ $article->->user()->withTrashed()->first()->username }} </td>
 					<td> {{ $article->title }} </td>
-					<td> {{ $article->created_at }} </td>
+					<td> {{ $article->created_at->diffForHumans() }} </td>
 				</tr>
 			@endforeach
 		</tbody>
 	</table>
 
 	{{ $news->links() }}
+@stop
+
+@section('scripts')
+	<script>
+		(function ($, undefined) {
+			$('.js-delete').on('click', function(e) {
+				e.preventDefault();
+				var id = $(this).data('id');
+				var url = '/dashboard/news/' + id;
+
+				console.log(url);
+
+				$.ajax({
+					url: url,
+					type: 'DELETE',
+					success: function(response) {
+						if ( response.status ) {
+							window.location.reload();
+						} else {
+							alert('Unable to process your request.');
+						}
+					}
+				})
+			});
+		})(jQuery);
+	</script>
 @stop

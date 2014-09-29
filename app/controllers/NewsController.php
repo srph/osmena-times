@@ -118,7 +118,8 @@ class NewsController extends \BaseController {
 			'news.delete.success',
 			"$news->title has been successfully deleted."
 		);
-		return Redirect::route('dashboard.news.index');
+		
+		return Response::json(['status' => true]);
 	}
 
 

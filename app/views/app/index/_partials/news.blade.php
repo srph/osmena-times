@@ -11,8 +11,8 @@
 							<small>
 								<i class="glyphicon glyphicon-time"></i>
 								Published by
-								<a href="{{ route('profile', $article->user->username) }}">
-									{{ '@' . $article->user->username }}
+								<a href="{{ route('profile', $article->user()->withTrashed()->first()->username) }}">
+									{{ '@' . $article->user()->withTrashed()->first()->username }}
 								</a>
 							</small>
 						</h5>

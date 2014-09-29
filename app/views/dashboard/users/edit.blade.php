@@ -40,7 +40,7 @@
 		<div class="row">
 			<div class="col-md-6 form-group">
 				<label> Name </label>
-				<input type="text" class="form-control" name="name">
+				<input type="text" class="form-control" name="name" value="{{ $user->profile->name }}">
 			</div>
 
 			<div class="col-md-6 form-group">
@@ -52,23 +52,21 @@
 		<div class="row">
 			<div class="col-md-6 form-group">
 				<label> About Me </label>
-				<textarea name="about_me" rows="5" class="form-control"></textarea>
+				<textarea name="about_me" rows="5" class="form-control">{{ $user->profile->about_me }}</textarea>
 			</div>
 
 			<div class="col-md-6">
 				<div class="form-group">
 					<label> Facebook </label>
-					<input type="text" class="form-control" name="facebook">
+					<input type="text" class="form-control" name="facebook" value="{{ $user->profile->facebook }}">
 				</div>
 
 				<div class="form-group">
 					<label> Twitter </label>
-					<input type="text" class="form-control" name="twitter">
+					<input type="text" class="form-control" name="twitter" value="{{ $user->profile->twitter }}">
 				</div>
 			</div>
 		</div>
-
-		<hr>
 
 		<button type="submit" class="btn btn-success"> Create profile </button>
 	</form>
