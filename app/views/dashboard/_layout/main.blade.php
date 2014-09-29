@@ -9,6 +9,8 @@
 	<div class="container">
 		<div class="row">
 			<section class="col-md-3">
+				@include('dashboard._layout._partials.welcome')
+				<hr>
 				@include('dashboard._layout._partials.sidebar')
 			</section>
 
