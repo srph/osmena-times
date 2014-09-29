@@ -11,7 +11,7 @@ class UsersController extends \BaseController {
 	{
 		$users = User::paginate(10);
 
-		return View::make()
+		return View::make('dashboard.users.index')
 			->with('users', $users);
 	}
 
@@ -23,7 +23,7 @@ class UsersController extends \BaseController {
 	 */
 	public function create()
 	{
-		return View::make();
+		return View::make('dashboard.users.index');
 	}
 
 
@@ -43,7 +43,7 @@ class UsersController extends \BaseController {
 			'user.store.success',
 			"$user->username has been successfully created"
 		);
-		return Redirect::route('dashboard.user.index');
+		return Redirect::route('dashboard.users.index');
 	}
 
 
@@ -69,7 +69,7 @@ class UsersController extends \BaseController {
 	public function edit($id)
 	{
 		$user = User::findOrFail($id);
-		return View::make();
+		return View::make('dashboard.users.edit');
 	}
 
 
@@ -89,7 +89,7 @@ class UsersController extends \BaseController {
 			'user.update.success',
 			"$user->username has been successfully updated"
 		);
-		return Redirect::route('dashboard.user.index');
+		return Redirect::route('dashboard.users.index');
 	}
 
 
@@ -108,7 +108,7 @@ class UsersController extends \BaseController {
 			'user.delete.success',
 			"$user->username has been successfully deleted"
 		);
-		return Redirect::route('dashboard.user.index');
+		return Redirect::route('dashboard.users.index');
 	}
 
 

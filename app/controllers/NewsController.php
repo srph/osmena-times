@@ -9,7 +9,10 @@ class NewsController extends \BaseController {
 	 */
 	public function index()
 	{
-		//
+		$news = News::paginate(10);
+
+		return View::make('dashboard.news.index')
+			->with('news', $news);
 	}
 
 
@@ -20,7 +23,7 @@ class NewsController extends \BaseController {
 	 */
 	public function create()
 	{
-		//
+		return View::make('dashboard.news.create');
 	}
 
 
@@ -31,7 +34,16 @@ class NewsController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
+		$input = Input::all();
+		$news = new news;
+		$news->fill($input);
+		$news->save();
+
+		Session::flash(
+			'news.store.success',
+			"$news->title has been successfully created."
+		);
+		return Redirect::route('dashboard.news.index');
 	}
 
 
@@ -55,7 +67,10 @@ class NewsController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		//
+		$news = News::findOrFail($id);
+
+		return View::make('dashboard.news.edit')
+			->with('news', $news);
 	}
 
 
@@ -67,7 +82,15 @@ class NewsController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		//
+		$input = Input::all();
+		$news = News::findOrFail($id);
+		$news->save($input);
+
+		Session::flash(
+			'news.update.success',
+			"$news->title has been successfully updated."
+		);
+		return Redirect::route('dashboard.news.index');
 	}
 
 
@@ -79,7 +102,14 @@ class NewsController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+		$news = News::findOrFail($id);
+		$news->delete();
+
+		Session::flash(
+			'news.delete.success',
+			"$news->title has been successfully deleted."
+		);
+		return Redirect::route('dashboard.news.index');
 	}
 
 
