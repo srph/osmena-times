@@ -53,10 +53,10 @@ class LocalSeeder extends Seeder {
 	public function seedNewsCategories($count = 3)
 	{
 		$faker = $this->faker;
-		$db = DB::table();
+		$db = DB::table('news_categories');
 		$db->delete();
 
-		$categories = ['News', 'Feature', 'Opinion']
+		$categories = ['News', 'Feature', 'Opinion'];
 
 		foreach(range(1, $count) as $index)
 		{
@@ -69,20 +69,20 @@ class LocalSeeder extends Seeder {
 		}
 	}
 
-	public function seedUsers($count = 5)
+	public function seedUsers($count = 3)
 	{
 		$faker = $this->faker;
-		$db = DB::table();
+		$db = DB::table('users');
 		$db->delete();
 
 		foreach(range(1, $count) as $index)
 		{
 			$db->insert([
-				'id'			=> floor($index % 3) + 1,
+				'id'			=> $index,
 				'username'		=> $faker->username,
 				'password'		=> Hash::make('1234'),
 				'created_at'	=> $this->now(),
-				'updated_at'	=> =$this->now()
+				'updated_at'	=> $this->now()
 			]);
 		}
 	}
