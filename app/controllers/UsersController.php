@@ -1,6 +1,6 @@
 <?php
 
-class UserController extends \BaseController {
+class UsersController extends \BaseController {
 
 	/**
 	 * Display a listing of the resource.
@@ -108,7 +108,7 @@ class UserController extends \BaseController {
 			'user.delete.success',
 			"$user->username has been successfully deleted"
 		);
-		return Redirect::route('dashboard.user.index')''
+		return Redirect::route('dashboard.user.index');
 	}
 
 
