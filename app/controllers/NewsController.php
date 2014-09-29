@@ -44,8 +44,13 @@ class NewsController extends \BaseController {
 	public function store()
 	{
 		$input = Input::all();
-		$news = new news;
-		$news->fill($input);
+		$file = News::upload(Input::file('cover'));
+		$news = new News([
+			'user_id'		=> Auth::user()->id,
+			'title'			=> Input::get('title'),
+			'content'		=> Input::get('content'),
+			'cover'			=> $file
+		]);
 		$news->save();
 
 		Session::flash(

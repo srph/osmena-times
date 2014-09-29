@@ -31,13 +31,16 @@ class HomeController extends BaseController {
 	public function article($id)
 	{
 		$main = News::findOrFail($id);
+		$main->views()->save(new NewsView);
 		$news = News::orderBy('id', 'desc')
 			->take(10)
 			->get();
+		$views = $main->viewCount();
 
 		return View::make('app.news.view')
 			->with('main', $main)
-			->with('news', $news);
+			->with('news', $news)
+			->With('views', $views);
 	}
 
 	public function user($username)

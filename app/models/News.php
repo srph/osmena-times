@@ -14,12 +14,32 @@ class News extends Eloquent {
 
 	public function views()
 	{
-		return $this->belongsToMany('User', 'views');
+		return $this->hasMany('NewsView');
+	}
+
+	public function viewCount()
+	{
+		return $this->views->count();
 	}
 
 	public function getCoverLinkAttribute()
 	{
 		return asset('uploads/news/' . $this->cover);
+	}
+
+	public function upload($file)
+	{
+		$name = str_random(10);
+		$ext = $file->getOriginalClientExtension();
+		$dest = 'uploads/news/';
+		$filename = "{$name}.{$ext}";
+
+		if($file->move($dest,$filename))
+		{
+			return $name;
+		}
+
+		return false;
 	}
 	
 }

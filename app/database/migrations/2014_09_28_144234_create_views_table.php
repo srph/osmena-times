@@ -12,10 +12,9 @@ class CreateViewsTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('views', function($table)
+		Schema::create('news_views', function($table)
 		{
 			$table->increments('id');
-			$table->string('user_id');
 			$table->string('news_id');
 			$table->timestamps();
 		});
@@ -28,7 +27,7 @@ class CreateViewsTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::dropIfExists('views');
+		Schema::dropIfExists('news_views');
 	}
 
 }

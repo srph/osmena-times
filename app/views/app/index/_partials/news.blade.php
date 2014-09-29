@@ -35,6 +35,8 @@
 						style="position: absolute; left: 10px; bottom: 10px;">
 						Read More
 					</a>
+
+					<h5 style="position: absolute; right: 10px; bottom: 10px;"> <small> <i class="glyphicon glyphicon-eye-open"></i> {{ $article->viewCount() }} views </small> </h5>
 				</section>
 			</section>
 		</div>
