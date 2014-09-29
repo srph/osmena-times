@@ -15,7 +15,7 @@ class HomeController extends BaseController {
 	|
 	*/
 
-	public function getIndex()
+	public function index()
 	{
 		$news = News::paginate(6);
 		
@@ -23,9 +23,26 @@ class HomeController extends BaseController {
 			->with('news', $news);
 	}
 
-	public function getAbout()
+	public function about()
 	{
 		return View::make('app.about');
+	}
+
+	public function article($id)
+	{
+		$news = News::findOrFail($id);
+
+		return View::make('app.news.view')
+			->with('news', $news);
+	}
+
+	public function user($username)
+	{
+		$user = User::where('username', $username)
+			->firstOrFail();
+
+		return View::make('app.users.view')
+			->with('user', $user);
 	}
 
 }

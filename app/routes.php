@@ -23,4 +23,7 @@ Route::group(['prefix' => 'dashboard'], function()
 });
 
 
-Route::controller('/', 'HomeController');
+Route::get('@{username}', ['as' => 'profile', 'uses' => 'HomeController@user']);
+Route::get('news/{id}', ['as' => 'article', 'uses' => 'HomeController@article']);
+Route::get('about', ['as' => 'about', 'uses' => 'HomeController@about']);
+Route::get('/', ['as' => 'home', 'uses' => 'HomeController@index']);
