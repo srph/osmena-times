@@ -35,12 +35,11 @@ class DashboardController extends \BaseController {
 			'password'	=> Input::get('password')
 		];
 
-		if ( Auth::attempt($account, false) )
+		if ( ! Auth::attempt($account, false) )
 		{
-			return Redirect::route('dashboard');
+			Session::flash('login.error', 'Invalid username/password');
 		}
 
-		Session::flash('login.error', 'Invalid username/password');
 		return Redirect::back();
 	}
 
@@ -49,9 +48,20 @@ class DashboardController extends \BaseController {
 	 */
 	public function getLogout()
 	{
-		Auth::logout();
-		Session::flash('logout', 'You have been successfully logged out!');
-		return Redirect::route('dashboard');
+		if( Auth::check() )
+		{
+			Auth::logout();
+			Session::flash('logout', 'You have been successfully logged out!');
+		}
+		
+		try
+		{
+			return Redirect::back();
+		}
+		catch(\InvalidArgumentException $exception)
+		{
+			return Redirect::route('dashboard');
+		}
 	}
 
 
