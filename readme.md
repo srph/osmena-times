@@ -22,6 +22,8 @@ Requirements:
 - MySQL >= 5.3
 - Composer
 
+```bash
 $ git remote add origin [url]
 $ git pull origin master
 $ composer update
+```
