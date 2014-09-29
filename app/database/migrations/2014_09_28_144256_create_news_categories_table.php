@@ -12,7 +12,12 @@ class CreateNewsCategoriesTable extends Migration {
 	 */
 	public function up()
 	{
-		//
+		Schema::create('news_categories', function($table)
+		{
+			$table->increments('id');
+			$table->string('name');
+			$table->timestamps();
+		});
 	}
 
 	/**
@@ -22,7 +27,7 @@ class CreateNewsCategoriesTable extends Migration {
 	 */
 	public function down()
 	{
-		//
+		Schema::dropIfExists('news_categories');
 	}
 
 }

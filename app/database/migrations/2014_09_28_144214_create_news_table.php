@@ -12,7 +12,17 @@ class CreateNewsTable extends Migration {
 	 */
 	public function up()
 	{
-		//
+		Schema::create('news', function($table)
+		{
+			$table->increments('id');
+			$table->string('user_id');
+			$table->string('category_id');
+			$table->string('title');
+			$table->text('content');
+			$table->string('preview');
+			$table->string('cover');
+			$table->timestamps();
+		});
 	}
 
 	/**
@@ -22,7 +32,7 @@ class CreateNewsTable extends Migration {
 	 */
 	public function down()
 	{
-		//
+		Schema::dropIfExists('news');
 	}
 
 }
