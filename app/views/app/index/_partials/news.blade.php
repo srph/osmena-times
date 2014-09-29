@@ -2,7 +2,7 @@
 	@foreach($news as $article)
 		<div class="col-sm-6 col-md-4">
 			<section class="thumbnail" style="height: 400px; position: relative;">
-				<img src="uploads/news/cover.jpg">
+				<img src="{{ $article->coverLink }}">
 				<section class="caption">
 					<h4 class="ellipsis"> {{ $article->title }} </h4>
 

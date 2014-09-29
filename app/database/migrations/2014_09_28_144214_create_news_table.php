@@ -16,11 +16,11 @@ class CreateNewsTable extends Migration {
 		{
 			$table->increments('id');
 			$table->string('user_id');
-			$table->string('category_id');
+			$table->string('category_id')->nullable()->default('1');
 			$table->string('title');
 			$table->text('content');
 			$table->string('preview');
-			$table->string('cover')->default('cover.jpg');
+			$table->string('cover')->nullable()->default('cover.jpg');
 			$table->timestamps();
 		});
 	}

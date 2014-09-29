@@ -32,7 +32,9 @@ class NewsController extends \BaseController {
 	 */
 	public function create()
 	{
-		return View::make('dashboard.news.create');
+		$categories = NewsCategory::all();
+		return View::make('dashboard.news.create')
+			->with('categories', $categories);
 	}
 
 
@@ -44,9 +46,11 @@ class NewsController extends \BaseController {
 	public function store()
 	{
 		$news = new News;
-		$news->user_id	= Auth::user()->id;
-		$news->title	= Input::get('title');
-		$news->content	= Input::get('content');
+		$news->user_id		= Auth::user()->id;
+		$news->title		= Input::get('title');
+		$news->content		= Input::get('content');
+		$news->category_id	= Input::get('category');
+		$news->preview 		= Input::get('preview');
 
 		if( Input::hasFile('cover') )
 		{
@@ -85,9 +89,11 @@ class NewsController extends \BaseController {
 	public function edit($id)
 	{
 		$news = News::findOrFail($id);
+		$categories = NewsCategory::all();
 
 		return View::make('dashboard.news.edit')
-			->with('news', $news);
+			->with('news', $news)
+			->with('categories', $categories);
 	}
 
 
@@ -99,9 +105,19 @@ class NewsController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		$input = Input::all();
 		$news = News::findOrFail($id);
-		$news->save($input);
+		$news->title		= Input::get('title');
+		$news->content		= Input::get('content');
+		$news->category_id	= Input::get('category');
+		$news->preview 		= Input::get('preview');
+
+		if( Input::hasFile('cover') )
+		{
+			$file = News::upload(Input::file('cover'));
+			$news->cover = $file;
+		}
+		
+		$news->save();
 
 		Session::flash(
 			'news.update.success',

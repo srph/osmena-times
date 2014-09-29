@@ -17,7 +17,7 @@ class HomeController extends BaseController {
 
 	public function index()
 	{
-		$news = News::paginate(6);
+		$news = News::orderBy('id', 'desc')->paginate(6);
 		
 		return View::make('app.index.template')
 			->with('news', $news);

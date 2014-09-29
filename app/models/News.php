@@ -30,13 +30,13 @@ class News extends Eloquent {
 	public static function upload($file)
 	{
 		$name = str_random(10);
-		$ext = $file->getOriginalClientExtension();
-		$dest = 'uploads/news/';
+		$ext = $file->getClientOriginalExtension();
+		$dest = public_path() . '/uploads/news/';
 		$filename = "{$name}.{$ext}";
 
 		if($file->move($dest,$filename))
 		{
-			return $name;
+			return $filename;
 		}
 
 		return false;

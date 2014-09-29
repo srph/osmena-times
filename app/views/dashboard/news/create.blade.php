@@ -12,11 +12,27 @@
 		</div>
 	@endif
 
-	<form action="{{ route('dashboard.news.store') }}" method="POST">
+	<form action="{{ route('dashboard.news.store') }}" method="POST" enctype="multipart/form-data">
 		<div class="row">
 			<div class="col-md-6 form-group">
 				<label> Title </label>
 				<input type="text" class="form-control" name="title">
+			</div>
+
+			<div class="col-md-6 form-group">
+				<label> Category </label>
+				<select name="category" class="form-control">
+					@foreach($categories as $category)
+						<option value="{{ $category->id }}"> {{ $category->name }} </option>
+					@endforeach
+				</select>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-6 form-group">
+				<label> Preview </label>
+				<input type="text" class="form-control" name="preview">
 			</div>
 
 			<div class="col-md-6 form-group">

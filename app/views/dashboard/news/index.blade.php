@@ -31,6 +31,7 @@
 				<th> Actions </th>
 				<th> Author </th>
 				<th> Title </th>
+				<th> Category </th>
 				<th> Date Published </th>
 			</tr>
 		</thead>
@@ -45,6 +46,7 @@
 					</td>
 					<td> {{ $article->user()->withTrashed()->first()->username }} </td>
 					<td> {{ $article->title }} </td>
+					<td> {{ $article->category->name }}
 					<td> {{ $article->created_at->diffForHumans() }} </td>
 				</tr>
 			@endforeach
