@@ -32,7 +32,7 @@ class UsersController extends \BaseController {
 	 */
 	public function create()
 	{
-		return View::make('dashboard.users.index');
+		return View::make('dashboard.users.create');
 	}
 
 
@@ -49,8 +49,8 @@ class UsersController extends \BaseController {
 		$user->save();
 
 		Session::flash(
-			'user.store.success',
-			"$user->username has been successfully created"
+			'users.store.success',
+			"$user->username has been successfully created."
 		);
 		return Redirect::route('dashboard.users.index');
 	}
@@ -64,8 +64,7 @@ class UsersController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		$user = User::findOrFail($id);
-		return View::make();
+		// 
 	}
 
 
@@ -78,7 +77,9 @@ class UsersController extends \BaseController {
 	public function edit($id)
 	{
 		$user = User::findOrFail($id);
-		return View::make('dashboard.users.edit');
+
+		return View::make('dashboard.users.edit')
+			->with('user', $user);
 	}
 
 
@@ -90,13 +91,13 @@ class UsersController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		$input = Input::all();
+		$password = Hash::make(Input::get('password'));
 		$user = User::findOrFail($id);
-		$user->save($input);
+		$user->update(['password' => $password]);
 
 		Session::flash(
-			'user.update.success',
-			"$user->username has been successfully updated"
+			'users.update.success',
+			"$user->username has been successfully updated."
 		);
 		return Redirect::route('dashboard.users.index');
 	}
@@ -114,7 +115,7 @@ class UsersController extends \BaseController {
 		$user->delete();
 
 		Session::flash(
-			'user.delete.success',
+			'users.delete.success',
 			"$user->username has been successfully deleted"
 		);
 		return Redirect::route('dashboard.users.index');

@@ -24,6 +24,7 @@ App::missing(function(Exception $e)
 Route::group(['prefix' => 'dashboard'], function()
 {
 	Route::resource('users', 'UsersController');
+	Route::get('users/{id}/profile', ['as' => 'dashboard.users.profile.update', 'uses' => 'ProfilesController@update']);
 	Route::resource('news', 'NewsController');
 	Route::controller('/', 'DashboardController', [
 		'getIndex'	=> 'dashboard',
