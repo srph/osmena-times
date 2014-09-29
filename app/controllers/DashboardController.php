@@ -13,7 +13,7 @@ class DashboardController extends \BaseController {
 	}
 
 	/**
-	 * Display a listing of the resource.
+	 * Display a 	listing of the resource.
 	 *
 	 * @return Response
 	 */
@@ -21,17 +21,7 @@ class DashboardController extends \BaseController {
 	{
 		return View::make('dashboard.index.template');
 	}
-
-
-	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return Response
-	 */
-	public function getLogin()
-	{
-		return View::make('dashboard.login');
-	}
+	
 
 	/**
 	 * Show the form for creating a new resource.

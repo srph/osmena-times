@@ -16,8 +16,7 @@ Route::group(['prefix' => 'dashboard'], function()
 	Route::resource('news', 'NewsController');
 	Route::controller('/', 'DashboardController', [
 		'getIndex'	=> 'dashboard',
-		'getLogin'	=> 'dashboard.login',
-		'postLogin'	=> 'dashboard.attempt'
+		'postLogin'	=> 'dashboard.login'
 	]);
 });
 
