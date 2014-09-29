@@ -13,10 +13,12 @@
 
 Route::group(['prefix' => 'dashboard'], function()
 {
+	Route::resource('users', 'UserController');
 	Route::resource('news', 'NewsController');
 	Route::controller('/', 'DashboardController', [
 		'getIndex'	=> 'dashboard',
-		'postLogin'	=> 'dashboard.login'
+		'postLogin'	=> 'dashboard.login',
+		'getLogout'	=> 'dashboard.logout'
 	]);
 });
 

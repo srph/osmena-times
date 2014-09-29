@@ -7,9 +7,19 @@
 </head>
 <body>
 	<div class="container">
-		@yield('content')
+		<div class="row">
+			<section class="col-md-3">
+				@include('dashboard._layout._partials.sidebar')
+			</section>
 
-		@include('app._layout._partials.footer')
+			<section class="col-md-9">
+				<div class="panel panel-default">
+					<div class="panel-body">
+						@yield('content')
+					</div>
+				</div>
+			</section>
+		</div>
 	</div>
 
 	<script src="/assets/js/jquery.js"></script>
