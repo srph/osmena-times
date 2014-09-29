@@ -5,7 +5,7 @@
 @section('content')
 	<div class="panel panel-default">
 		<div class="panel-body">
-			<img src="uploads/news/cover.jpg" width="100%">
+			<img src="{{ asset('uploads/news/cover.jpg') }}" width="100%">
 			<hr>
 			<p>
 				Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
