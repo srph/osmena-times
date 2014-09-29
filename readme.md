@@ -15,7 +15,7 @@ Some screenshots:
 
 #Setup#
 
-The usual Laravel setup. Anyway, I'll still explain.
+The usual Laravel setup. Anyway, I'll still *explain*.
 
 Requirements:
 
