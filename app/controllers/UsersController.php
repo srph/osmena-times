@@ -3,6 +3,15 @@
 class UsersController extends \BaseController {
 
 	/**
+	 * Class constructor
+	 * Adds 'filter' to all controller methods
+	 */
+	public function __construct()
+	{
+		$this->beforeFilter('auth', ['except' => 'show']);
+	}
+
+	/**
 	 * Display a listing of the resource.
 	 *
 	 * @return Response
