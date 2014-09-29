@@ -41,7 +41,7 @@ class LocalSeeder extends Seeder {
 				'id'			=> $index,
 				'user_id'		=> floor($index % 3) + 1,
 				'category_id'	=> floor($index % 3) + 1,
-				'title'			=> $faker->title,
+				'title'			=> $faker->sentence(floor($index % 3) + 1),
 				'content'		=> $faker->paragraph(3),
 				'preview'		=> $faker->text(150),
 				'created_at'	=> $this->now(),
