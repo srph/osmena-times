@@ -17,7 +17,10 @@ class HomeController extends BaseController {
 
 	public function getIndex()
 	{
-		return View::make('app.index.template');
+		$news = News::paginate(6);
+		
+		return View::make('app.index.template')
+			->with('news', $news);
 	}
 
 	public function getAbout()
