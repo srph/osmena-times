@@ -44,9 +44,21 @@ class UsersController extends \BaseController {
 	public function store()
 	{
 		$input = Input::all();
-		$user = new User;
-		$user->fill($input);
+		$user = new User([
+			'username'		=> Input::get('username'),
+			'password'		=> Hash::make(Input::get('password'))
+		]);
 		$user->save();
+
+		$profile = new Profile([
+			'user_id'		=> $user->id,
+			'name' 			=> Input::get('name'),
+			'about_me'		=> Input::get('about_me'),
+			'twitter'		=> Input::get('twitter'),
+			'facebook'		=> Input::get('facebook')
+		]);
+
+		$user->profile()->save($profile);
 
 		Session::flash(
 			'users.store.success',
