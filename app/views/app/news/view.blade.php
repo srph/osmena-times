@@ -16,7 +16,7 @@
 
 					<div class="clearfix">
 						<h5 class="pull-left"> <small> <i class="glyphicon glyphicon-time"></i> {{ $main->created_at->diffForHumans() }} <br /> <i class="glyphicon glyphicon-eye-open"></i> {{ $views }} views </small> </h5>
-						<h5 class="pull-right"> <small> <i class="glyphicon glyphicon-user"></i> <a href="{{ route('profile', $main->user->username) }}"> {{ '@' . $main->user->username }} </a> </small> </h5>
+						<h5 class="pull-right"> <small> <i class="glyphicon glyphicon-user"></i> <a href="{{ route('profile', $main->user->username) }}"> {{ '@' . $main->user->username }} </a> <br /> <i class="glyphicon glyphicon-bookmark"></i> {{ $main->category->name }} </small> </h5>
 					</div>
 
 					<hr>

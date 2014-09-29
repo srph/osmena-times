@@ -36,7 +36,12 @@
 						Read More
 					</a>
 
-					<h5 style="position: absolute; right: 10px; bottom: 10px;"> <small> <i class="glyphicon glyphicon-eye-open"></i> {{ $article->viewCount() }} views </small> </h5>
+					<h5 style="position: absolute; right: 10px; bottom: 10px;">
+						<small>
+							<section style="margin-right:10px;" class="text-right"> <i class="glyphicon glyphicon-bookmark"></i> {{ $article->category->name }} </section>
+							<i class="glyphicon glyphicon-eye-open"></i> {{ $article->viewCount() }} views
+						</small>
+					</h5>
 				</section>
 			</section>
 		</div>
